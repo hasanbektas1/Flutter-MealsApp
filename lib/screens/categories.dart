@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/data/datas.dart';
 import 'package:mealsapp/models/category.dart';
 import 'package:mealsapp/models/meal.dart';
+import 'package:mealsapp/providers/categories__provider.dart';
 import 'package:mealsapp/providers/meals_provider.dart';
 import 'package:mealsapp/screens/favorites.dart';
 import 'package:mealsapp/screens/meal_list.dart';
@@ -26,6 +27,7 @@ class Categories extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final mealsFromState = ref.watch(mealsProvider);
+    final categoriesFromState = ref.watch(categoriesProvider);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Kategoriler"),
@@ -49,7 +51,7 @@ class Categories extends ConsumerWidget {
             mainAxisSpacing: 20,
             childAspectRatio: 1),
         children: [
-          for (final category in categories)
+          for (final category in categoriesFromState)
             CategoryCard(
               category: category,
               onSelectCategory: () {
