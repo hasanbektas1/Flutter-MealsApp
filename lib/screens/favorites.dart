@@ -29,13 +29,30 @@ class _FavoritesState extends ConsumerState<Favorites> {
               elevation: 5,
               color: Colors.white,
               child: Column(children: [
-                Text(
-                  favoriteMeals[index].name,
-                  style: const TextStyle(
-                      color: Colors.red,
-                      fontWeight: FontWeight.bold,
-                      fontSize: 45),
-                ),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Expanded(
+                        child: Text(
+                          favoriteMeals[index].name,
+                          style: const TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.bold,
+                              fontSize: 45),
+                        ),
+                      ),
+                      IconButton(
+                        icon: const Icon(
+                          Icons.favorite,
+                          color: Colors.red,
+                        ),
+                        onPressed: () {
+                          ref
+                              .read(favoriteMealsProvider.notifier)
+                              .toggleMealFavorite(favoriteMeals[index]);
+                        },
+                      ),
+                    ]),
               ]),
             ),
           ),
