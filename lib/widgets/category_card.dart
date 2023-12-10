@@ -14,18 +14,48 @@ class CategoryCard extends StatelessWidget {
     return InkWell(
       splashColor: Theme.of(context).primaryColor,
       onTap: () => onSelectCategory(),
-      child: Container(
-          padding: const EdgeInsets.all(16),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20.0),
+        ),
+        elevation: 5,
+        shadowColor: Colors.white,
+        child: Container(
+          height: 150,
+          width: 200,
           decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              category.color.withOpacity(0.5),
-              category.color.withOpacity(0.9)
-            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+            borderRadius: BorderRadius.circular(20.0),
+            gradient: LinearGradient(
+              colors: [
+                category.color.withOpacity(0.9),
+                category.color.withOpacity(0.2),
+              ],
+              stops: const [0.2, 1.0],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
           ),
-          child: Text(
-            category.name,
-            style: const TextStyle(fontSize: 20),
-          )),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Icon(
+                Icons.restaurant,
+                color: Colors.white,
+                size: 40,
+              ),
+              const SizedBox(height: 10),
+              Text(
+                category.name,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 18,
+                  fontWeight: FontWeight.bold,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
