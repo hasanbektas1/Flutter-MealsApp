@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mealsapp/data/datas.dart';
 import 'package:mealsapp/providers/categories__provider.dart';
 import 'package:mealsapp/providers/filters_provvider.dart';
 import 'package:mealsapp/providers/meals_provider.dart';
@@ -8,7 +7,6 @@ import 'package:mealsapp/screens/favorites.dart';
 import 'package:mealsapp/screens/meal_list.dart';
 import 'package:mealsapp/screens/menus/menu.dart';
 import 'package:mealsapp/widgets/category_card.dart';
-import 'package:mealsapp/widgets/menu_card.dart';
 
 class Categories extends ConsumerWidget {
   const Categories({Key? key}) : super(key: key);

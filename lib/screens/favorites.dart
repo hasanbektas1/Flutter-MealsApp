@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/providers/favorites_provider.dart';
+import 'package:mealsapp/widgets/favorite_card.dart';
 
 class Favorites extends ConsumerStatefulWidget {
   const Favorites({super.key});
@@ -25,36 +26,8 @@ class _FavoritesState extends ConsumerState<Favorites> {
         child: Card(
           child: ListView.builder(
             itemCount: favoriteMeals.length,
-            itemBuilder: (ctx, index) => Card(
-              elevation: 5,
-              color: Colors.white,
-              child: Column(children: [
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        child: Text(
-                          favoriteMeals[index].name,
-                          style: const TextStyle(
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                              fontSize: 30),
-                        ),
-                      ),
-                      IconButton(
-                        icon: const Icon(
-                          Icons.favorite,
-                          color: Colors.red,
-                        ),
-                        onPressed: () {
-                          ref
-                              .read(favoriteMealsProvider.notifier)
-                              .toggleMealFavorite(favoriteMeals[index]);
-                        },
-                      ),
-                    ]),
-              ]),
-            ),
+            itemBuilder: (ctx, index) =>
+                FavoritesCard(meal: favoriteMeals[index]),
           ),
         ),
       ),
