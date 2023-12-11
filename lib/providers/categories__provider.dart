@@ -9,7 +9,7 @@ final categoriesProvider = Provider((ProviderRef ref) {
     Category(id: "3", name: "Ana Yemekler", color: Colors.red),
     Category(id: "4", name: "Tatlılar", color: Colors.yellow),
     Category(id: "5", name: "Mezeler", color: Colors.green),
-    Category(id: "5", name: "İçecekler", color: Colors.blue),
+    Category(id: "6", name: "İçecekler", color: Colors.blue),
   ];
 });
 
