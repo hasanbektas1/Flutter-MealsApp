@@ -6,6 +6,7 @@ import 'package:mealsapp/providers/filters_provvider.dart';
 import 'package:mealsapp/providers/meals_provider.dart';
 import 'package:mealsapp/screens/favorites.dart';
 import 'package:mealsapp/screens/meal_list.dart';
+import 'package:mealsapp/screens/menus/menu.dart';
 import 'package:mealsapp/widgets/category_card.dart';
 import 'package:mealsapp/widgets/menu_card.dart';
 
@@ -55,44 +56,7 @@ class Categories extends ConsumerWidget {
             )
         ],
       ),
-      drawer: Drawer(
-        child: ListView(
-          padding: EdgeInsets.zero,
-          children: [
-            const DrawerHeader(
-              decoration: BoxDecoration(
-                color: Colors.black,
-                image: DecorationImage(
-                  image: NetworkImage(
-                    "https://st4.depositphotos.com/3538103/40645/v/950/depositphotos_406455800-stock-illustration-user-icon-vector-people-icon.jpg",
-                  ),
-                  fit: BoxFit.fill,
-                ),
-              ),
-              child:
-                  Column(mainAxisAlignment: MainAxisAlignment.end, children: [
-                Text(
-                  "Hasan Bektaş",
-                  style: TextStyle(
-                      fontSize: 30,
-                      fontWeight: FontWeight.bold,
-                      color: Colors.black),
-                ),
-              ]),
-            ),
-            for (final menu in menus)
-              Card(
-                shape: RoundedRectangleBorder(
-                    side: BorderSide(
-                  color: Theme.of(context).colorScheme.onSurface,
-                )),
-                child: MenuCard(
-                  menu: menu,
-                ),
-              )
-          ],
-        ),
-      ),
+      drawer: MenuCard(),
     );
   }
 }

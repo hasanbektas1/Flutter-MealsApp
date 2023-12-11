@@ -1,46 +1,60 @@
 import 'package:flutter/material.dart';
-import 'package:mealsapp/models/menu.dart';
-import 'package:mealsapp/screens/favorites.dart';
 
-class MenuCard extends StatelessWidget {
-  const MenuCard({Key? key, required this.menu}) : super(key: key);
-
-  final Menu menu;
+class MenusCard extends StatelessWidget {
+  const MenusCard({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: InkWell(
-        splashColor: Theme.of(context).primaryColor,
-        onTap: () {
-          print("Geliştirilecek..");
-          if (menu.name == "Favoriler") {
-            Navigator.of(context)
-                .push(MaterialPageRoute(builder: (ctx) => Favorites()));
-          }
-        },
-        child: Container(
-          padding: const EdgeInsets.all(8),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(colors: [
-              Colors.blue.withOpacity(0.2),
-              Colors.blue.withOpacity(0.9),
-            ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-          ),
-          child: Center(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  menu.name,
-                  style: const TextStyle(
-                    fontSize: 20,
-                  ),
-                ),
-                menu.iconn
-              ],
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('MealsApp Hakkında'),
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            const Text(
+              'MealsApp Hakkında',
+              style: TextStyle(
+                fontSize: 24,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-          ),
+            const SizedBox(height: 16),
+            const Text(
+              "MealsApp, yemek tutkunları için tasarlanmış kullanıcı dostu bir mobil uygulamadır. Uygulama, kullanıcılara kategorilere ayrılmış geniş bir yemek seçeneği sunar. Kullanıcılar istedikleri kategoriyi seçer, favori yemeklerini bulur ve hatta kendi favori tariflerini kaydedebilirler. ",
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 16),
+            const Text(
+              'Uygulama Hakkında',
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            const Text(
+              'MealsApp, Flutter framework kullanılarak geliştirilmiştir. '
+              'Ayrıntılı bilgi ve kaynak kodları için GitHub sayfamızı ziyaret edebilirsiniz:',
+              style: TextStyle(fontSize: 16),
+            ),
+            const SizedBox(height: 8),
+            InkWell(
+              onTap: () {
+                print("Geliştirilecek..");
+              },
+              child: const Text(
+                'https://github.com/hasanbektas1/MealsApp',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.blue,
+                  decoration: TextDecoration.underline,
+                ),
+              ),
+            ),
+          ],
         ),
       ),
     );
