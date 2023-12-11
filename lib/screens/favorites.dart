@@ -36,9 +36,9 @@ class _FavoritesState extends ConsumerState<Favorites> {
                         child: Text(
                           favoriteMeals[index].name,
                           style: const TextStyle(
-                              color: Colors.red,
+                              color: Colors.black,
                               fontWeight: FontWeight.bold,
-                              fontSize: 45),
+                              fontSize: 30),
                         ),
                       ),
                       IconButton(

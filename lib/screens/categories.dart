@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mealsapp/data/datas.dart';
-import 'package:mealsapp/models/category.dart';
-import 'package:mealsapp/models/meal.dart';
 import 'package:mealsapp/providers/categories__provider.dart';
+import 'package:mealsapp/providers/filters_provvider.dart';
 import 'package:mealsapp/providers/meals_provider.dart';
 import 'package:mealsapp/screens/favorites.dart';
 import 'package:mealsapp/screens/meal_list.dart';
@@ -12,17 +11,6 @@ import 'package:mealsapp/widgets/menu_card.dart';
 
 class Categories extends ConsumerWidget {
   const Categories({Key? key}) : super(key: key);
-
-  void _selectCategory(
-      BuildContext context, Category category, List<Meal> mealsProvider) {
-    Navigator.of(context).push(MaterialPageRoute(
-        builder: (ctx) => MealList(
-              meals: mealsProvider
-                  .where((element) => element.categoryId == category.id)
-                  .toList(),
-              categoryName: category,
-            )));
-  }
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -55,7 +43,14 @@ class Categories extends ConsumerWidget {
             CategoryCard(
               category: category,
               onSelectCategory: () {
-                _selectCategory(context, category, mealsFromState);
+                ref
+                    .read(selectedCategoryNameProvider.notifier)
+                    .seledtedCategoryNameChange(category);
+                ref
+                    .read(filterMealsProvider.notifier)
+                    .filteredMeals(category, mealsFromState);
+                Navigator.of(context)
+                    .push(MaterialPageRoute(builder: (ctx) => MealList()));
               },
             )
         ],

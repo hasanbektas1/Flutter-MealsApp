@@ -11,3 +11,17 @@ final categoriesProvider = Provider((ProviderRef ref) {
     Category(id: "5", name: "Mezeler", color: Colors.green),
   ];
 });
+
+class SelectedCategoryNameNotifier extends StateNotifier<String> {
+  SelectedCategoryNameNotifier() : super(''); // initial state belirleme
+
+  void seledtedCategoryNameChange(Category category) {
+    state = category.name;
+  }
+}
+
+// provider
+final selectedCategoryNameProvider =
+    StateNotifierProvider<SelectedCategoryNameNotifier, String>((ref) {
+  return SelectedCategoryNameNotifier();
+});

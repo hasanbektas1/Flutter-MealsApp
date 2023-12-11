@@ -1,23 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mealsapp/models/category.dart';
-import 'package:mealsapp/models/meal.dart';
+import 'package:mealsapp/providers/categories__provider.dart';
+import 'package:mealsapp/providers/filters_provvider.dart';
 import 'package:mealsapp/widgets/meal_card.dart';
 
 class MealList extends ConsumerWidget {
-  const MealList({Key? key, required this.meals, required this.categoryName})
-      : super(key: key);
-  final List<Meal> meals;
-  final Category categoryName;
+  const MealList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final filterMealsFromState = ref.watch(filterMealsProvider);
+    final selectedCategoryFromState = ref.watch(selectedCategoryNameProvider);
+
     Widget widget = ListView.builder(
         padding: const EdgeInsets.all(16),
-        itemCount: meals.length,
-        itemBuilder: (ctx, index) => MealCard(meal: meals[index]));
+        itemCount: filterMealsFromState.length,
+        itemBuilder: (ctx, index) =>
+            MealCard(meal: filterMealsFromState[index]));
 
-    if (meals.isEmpty) {
+    if (filterMealsFromState.isEmpty) {
       widget = const Center(
         child: Text("Bu kategoride hiç bir içerik bulunmamaktadır."),
       );
@@ -25,7 +26,7 @@ class MealList extends ConsumerWidget {
 
     return Scaffold(
         appBar: AppBar(
-          title: Text(categoryName.name),
+          title: Text(selectedCategoryFromState),
         ),
         body: widget);
   }
