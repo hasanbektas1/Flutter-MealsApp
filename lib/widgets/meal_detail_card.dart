@@ -60,7 +60,8 @@ class MealDetailCard extends StatelessWidget {
                         padding: const EdgeInsets.all(8.0),
                         child: Text(
                           ingredient,
-                          style: const TextStyle(color: Colors.white),
+                          style: const TextStyle(
+                              color: Colors.white, fontSize: 17),
                         ),
                       ),
                   ],
@@ -80,7 +81,7 @@ class MealDetailCard extends StatelessWidget {
                   child: Text(
                     meal.prepare,
                     textAlign: TextAlign.center,
-                    style: const TextStyle(color: Colors.white),
+                    style: const TextStyle(color: Colors.white, fontSize: 17),
                   ),
                 ),
               ],

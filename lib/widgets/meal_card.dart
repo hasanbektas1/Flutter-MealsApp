@@ -41,7 +41,7 @@ class MealCard extends ConsumerWidget {
               child: Text(
                 meal.name,
                 style: const TextStyle(
-                  fontSize: 20,
+                  fontSize: 22,
                   fontWeight: FontWeight.bold,
                   color: Colors.black,
                 ),
